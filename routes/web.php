@@ -18,3 +18,5 @@ $router->get('/', function () use ($router) {
 $router->get('/lista-usuarios', 'APIController@ListaUsuario');
 
 $router->get('/index','APIController@index');
+
+$router->post('/email/send','APIController@EnviarEmails');

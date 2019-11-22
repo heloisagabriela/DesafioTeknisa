@@ -26,18 +26,17 @@ class APIController extends Controller{
            }
         //Indentificar o email para melhor vizualizacao 
            $str=implode(",", $array);
-  
-         //filtrar os emails          
+            
           $this->ValidarEmail($str);
     }
 
-    public function ValidarEmail($arrayEmails){
+    public function ValidarEmail($str){
 
         $file = fopen('../emails.txt','w');
-        fwrite($file, print_r($arrayEmails, TRUE));
+        fwrite($file, print_r($str, TRUE));
     
         $file = fopen('../emails_'.time().'.txt','w');
-        fwrite($file, print_r($arrayEmails, TRUE));
+        fwrite($file, print_r($str, TRUE));
 
     }
 
@@ -75,5 +74,11 @@ class APIController extends Controller{
         //Retornar o implode
         // return response($str,201)
         // ->header('Content-Type', 'application/json');
+    }
+
+    public function EnviarEmails(Request $request){
+        // $data = $request->json()->all();
+        return response($request,201)
+        ->header('Content-Type', 'application/json');
     }
 }
