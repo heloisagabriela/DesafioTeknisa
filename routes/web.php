@@ -14,3 +14,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/lista-usuarios', 'APIController@ListaUsuario');
+
+$router->get('/index','APIController@index');
